@@ -7,15 +7,12 @@ const app = express();   // ✅ sabse pehle app define karo
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connect
-mongoose.connect("mongodb+srv://ssumitrawat1107_db_user:<db_password>@cluster0.lohpjwf.mongodb.net/?appName=Cluster0", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+// ✅ MongoDB connect (simplified for latest driver)
+mongoose.connect("mongodb+srv://ssumitrawat1107_db_user:Rawat@123@cluster0.lohpjwf.mongodb.net/eventdb?retryWrites=true&w=majority")
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.error(err));
 
-// Schema
+// 📦 Schema
 const BookingSchema = new mongoose.Schema({
   name: String,
   email: String,
@@ -23,7 +20,7 @@ const BookingSchema = new mongoose.Schema({
 
 const Booking = mongoose.model("Booking", BookingSchema);
 
-// Routes
+// 📩 POST API
 app.post("/book", async (req, res) => {
   try {
     const newBooking = new Booking(req.body);
@@ -34,6 +31,7 @@ app.post("/book", async (req, res) => {
   }
 });
 
+// 📥 GET API
 app.get("/bookings", async (req, res) => {
   try {
     const data = await Booking.find();
