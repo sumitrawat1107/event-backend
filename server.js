@@ -12,6 +12,7 @@ mongoose.connect("mongodb+srv://ssumitrawat1107_db_user:Rawat@123@cluster0.lohpj
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.error(err));
 
+
 // 📦 Schema
 const BookingSchema = new mongoose.Schema({
   name: String,
