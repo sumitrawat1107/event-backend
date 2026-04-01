@@ -1,12 +1,17 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-
-const app = express();   // 👈 yahan app define karna zaroori hai
-
-app.use(cors());
-app.use(express.json());
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.post("/book", async (req, res) => {
+  try {
+    const newBooking = new Booking(req.body); // Booking model use karo
+    await newBooking.save();
+    res.json({ message: "Booking saved in DB!" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to save booking" });
+  }
+});
+app.get("/bookings", async (req, res) => {
+  try {
+    const allBookings = await Booking.find();
+    res.json(allBookings);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch bookings" });
+  }
 });
