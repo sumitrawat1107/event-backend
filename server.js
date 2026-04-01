@@ -8,10 +8,10 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB connect (simplified for latest driver)
-mongoose.connect("mongodb+srv://ssumitrawat1107_db_user:Rawat@123@cluster0.lohpjwf.mongodb.net/sample_mflix?retryWrites=true&w=majority
-")
+mongoose.connect("mongodb+srv://ssumitrawat1107_db_user:Rawat@123@cluster0.lohpjwf.mongodb.net/sample_mflix?retryWrites=true&w=majority")
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.error(err));
+
 
 
 // 📦 Schema
