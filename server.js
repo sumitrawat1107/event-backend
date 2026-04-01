@@ -15,3 +15,6 @@ app.get("/bookings", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch bookings" });
   }
 });
+app.get("/", (req, res) => {
+  res.send("Backend is live and running!");
+});
