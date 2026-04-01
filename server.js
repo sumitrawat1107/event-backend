@@ -1,5 +1,8 @@
-const PORT = process.env.PORT || 5000;
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
 
-app.listen(PORT, () => {
-  console.log("Server running");
-});
+const app = express();   // <-- yeh line zaroori hai
+
+app.use(cors());
+app.use(express.json());
